@@ -30,157 +30,157 @@ public class ZooManager {
     public Lion getHighestLion() {
         if (lionList.isEmpty())
             return null;
-        Lion highest = lionList.get(0);
+        Lion currentHighestLion = lionList.get(0);
         if (lionList.size() == 1)
-            return highest;
+            return currentHighestLion;
         for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getHeight() > highest.getHeight())
-                highest = lionList.get(i);
+            if (lionList.get(i).getHeight() > currentHighestLion.getHeight())
+                currentHighestLion = lionList.get(i);
         }
-        return highest;
+        return currentHighestLion;
     }
 
     public Lion getLowestLion() {
         if (lionList.isEmpty())
             return null;
-        Lion lowest = lionList.get(0);
+        Lion currentLowestLion = lionList.get(0);
         if (lionList.size() == 1)
-            return lowest;
+            return currentLowestLion;
         for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getHeight() < lowest.getHeight())
-                lowest = lionList.get(i);
+            if (lionList.get(i).getHeight() < currentLowestLion.getHeight())
+                currentLowestLion = lionList.get(i);
         }
-        return lowest;
+        return currentLowestLion;
     }
 
     public Tiger getHighestTiger() {
         if (tigerList.isEmpty())
             return null;
-        Tiger highest = tigerList.get(0);
+        Tiger currentHighestTiger = tigerList.get(0);
         if (tigerList.size() == 1)
-            return highest;
+            return currentHighestTiger;
         for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getHeight() > highest.getHeight())
-                highest = tigerList.get(i);
+            if (tigerList.get(i).getHeight() > currentHighestTiger.getHeight())
+                currentHighestTiger = tigerList.get(i);
         }
-        return highest;
+        return currentHighestTiger;
     }
 
     public Tiger getLowestTiger() {
         if (tigerList.isEmpty())
             return null;
-        Tiger lowest = tigerList.get(0);
+        Tiger currentLowestTiger = tigerList.get(0);
         if (tigerList.size() == 1)
-            return lowest;
+            return currentLowestTiger;
         for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getHeight() < lowest.getHeight())
-                lowest = tigerList.get(i);
+            if (tigerList.get(i).getHeight() < currentLowestTiger.getHeight())
+                currentLowestTiger = tigerList.get(i);
         }
-        return lowest;
+        return currentLowestTiger;
     }
 
     public Eagle getHighestEagle() {
         if (eagleList.isEmpty())
             return null;
-        Eagle highest = eagleList.get(0);
+        Eagle currentHighestEagle = eagleList.get(0);
         if (eagleList.size() == 1)
-            return highest;
+            return currentHighestEagle;
         for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getHeight() > highest.getHeight())
-                highest = eagleList.get(i);
+            if (eagleList.get(i).getHeight() > currentHighestEagle.getHeight())
+                currentHighestEagle = eagleList.get(i);
         }
-        return highest;
+        return currentHighestEagle;
     }
 
     public Eagle getLowestEagle() {
         if (eagleList.isEmpty())
             return null;
-        Eagle lowest = eagleList.get(0);
+        Eagle currentLowestEagle = eagleList.get(0);
         if (eagleList.size() == 1)
-            return lowest;
+            return currentLowestEagle;
         for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getHeight() < lowest.getHeight())
-                lowest = eagleList.get(i);
+            if (eagleList.get(i).getHeight() < currentLowestEagle.getHeight())
+                currentLowestEagle = eagleList.get(i);
         }
-        return lowest;
+        return currentLowestEagle;
     }
 
     public Lion getHeavierLion() {
         if (lionList.isEmpty())
             return null;
-        Lion heavier = lionList.get(0);
+        Lion currentHeavierLion = lionList.get(0);
         if (lionList.size() == 1)
-            return heavier;
+            return currentHeavierLion;
         for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getWeight() > heavier.getWeight())
-                heavier = lionList.get(i);
+            if (lionList.get(i).getWeight() > currentHeavierLion.getWeight())
+                currentHeavierLion = lionList.get(i);
         }
-        return heavier;
+        return currentHeavierLion;
     }
 
     public Lion getLighterLion() {
         if (lionList.isEmpty())
             return null;
-        Lion lighter = lionList.get(0);
+        Lion currentLighterLion = lionList.get(0);
         if (lionList.size() == 1)
-            return lighter;
+            return currentLighterLion;
         for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getWeight() < lighter.getWeight())
-                lighter = lionList.get(i);
+            if (lionList.get(i).getWeight() < currentLighterLion.getWeight())
+                currentLighterLion = lionList.get(i);
         }
-        return lighter;
+        return currentLighterLion;
     }
 
     public Tiger getHeavierTiger() {
         if (tigerList.isEmpty())
             return null;
-        Tiger heavier = tigerList.get(0);
+        Tiger currentHeavierTiger = tigerList.get(0);
         if (tigerList.size() == 1)
-            return heavier;
+            return currentHeavierTiger;
         for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getWeight() > heavier.getWeight())
-                heavier = tigerList.get(i);
+            if (tigerList.get(i).getWeight() > currentHeavierTiger.getWeight())
+                currentHeavierTiger = tigerList.get(i);
         }
-        return heavier;
+        return currentHeavierTiger;
     }
 
     public Tiger getLighterTiger() {
         if (tigerList.isEmpty())
             return null;
-        Tiger lighter = tigerList.get(0);
+        Tiger currentLighterTiger = tigerList.get(0);
         if (tigerList.size() == 1)
-            return lighter;
+            return currentLighterTiger;
         for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getWeight() < lighter.getWeight())
-                lighter = tigerList.get(i);
+            if (tigerList.get(i).getWeight() < currentLighterTiger.getWeight())
+                currentLighterTiger = tigerList.get(i);
         }
-        return lighter;
+        return currentLighterTiger;
     }
 
     public Eagle getHeavierEagle() {
         if (eagleList.isEmpty())
             return null;
-        Eagle heavier = eagleList.get(0);
+        Eagle currentHeavierEagle = eagleList.get(0);
         if (eagleList.size() == 1)
-            return heavier;
+            return currentHeavierEagle;
         for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getWeight() > heavier.getWeight())
-                heavier = eagleList.get(i);
+            if (eagleList.get(i).getWeight() > currentHeavierEagle.getWeight())
+                currentHeavierEagle = eagleList.get(i);
         }
-        return heavier;
+        return currentHeavierEagle;
     }
 
     public Eagle getLighterEagle() {
         if (eagleList.isEmpty())
             return null;
-        Eagle lighter = eagleList.get(0);
+        Eagle currentLighterEagle = eagleList.get(0);
         if (eagleList.size() == 1)
-            return lighter;
+            return currentLighterEagle;
         for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getWeight() < lighter.getWeight())
-                lighter = eagleList.get(i);
+            if (eagleList.get(i).getWeight() < currentLighterEagle.getWeight())
+                currentLighterEagle = eagleList.get(i);
         }
-        return lighter;
+        return currentLighterEagle;
     }
 
     public TailedAnimal getLongestTailedAnimal() {
@@ -189,27 +189,27 @@ public class ZooManager {
         tailedAnimalList.addAll(tigerList);
         if (tailedAnimalList.isEmpty())
             return null;
-        TailedAnimal longestTailedAnimal = tailedAnimalList.get(0);
+        TailedAnimal currentLongestTailedAnimal = tailedAnimalList.get(0);
         if (tailedAnimalList.size() == 1)
-            return longestTailedAnimal;
+            return currentLongestTailedAnimal;
         for (int i = 1; i < tailedAnimalList.size(); i++) {
-            if (tailedAnimalList.get(i).getTailLength() < longestTailedAnimal.getTailLength())
-                longestTailedAnimal = tailedAnimalList.get(i);
+            if (tailedAnimalList.get(i).getTailLength() < currentLongestTailedAnimal.getTailLength())
+                currentLongestTailedAnimal = tailedAnimalList.get(i);
         }
-        return longestTailedAnimal;
+        return currentLongestTailedAnimal;
     }
 
     public WingedAnimal getLargestWingspanAnimal() {
         List<WingedAnimal> wingedAnimalList = new ArrayList<>(eagleList);
         if (wingedAnimalList.isEmpty())
             return null;
-        WingedAnimal largestWingspanAnimal = wingedAnimalList.get(0);
+        WingedAnimal currentLargestWingspanAnimal = wingedAnimalList.get(0);
         if (wingedAnimalList.size() == 1)
-            return largestWingspanAnimal;
+            return currentLargestWingspanAnimal;
         for (int i = 1; i < wingedAnimalList.size(); i++) {
-            if (wingedAnimalList.get(i).getWingspan() < largestWingspanAnimal.getWingspan())
-                largestWingspanAnimal = wingedAnimalList.get(i);
+            if (wingedAnimalList.get(i).getWingspan() < currentLargestWingspanAnimal.getWingspan())
+                currentLargestWingspanAnimal = wingedAnimalList.get(i);
         }
-        return largestWingspanAnimal;
+        return currentLargestWingspanAnimal;
     }
 }
