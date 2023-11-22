@@ -3,13 +3,13 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionaleZoo {
+public class ZooManager {
 
     private List<Eagle> eagleList;
     private List<Lion> lionList;
     private List<Tiger> tigerList;
 
-    public GestionaleZoo() {
+    public ZooManager() {
         eagleList = new ArrayList<>();
         lionList = new ArrayList<>();
         tigerList = new ArrayList<>();
