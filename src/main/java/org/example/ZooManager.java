@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ZooManager {
 
-    private List<Eagle> eagleList;
-    private List<Lion> lionList;
-    private List<Tiger> tigerList;
+    private final List<Eagle> eagleList;
+    private final List<Lion> lionList;
+    private final List<Tiger> tigerList;
 
     public ZooManager() {
         eagleList = new ArrayList<>();
@@ -15,16 +15,16 @@ public class ZooManager {
         tigerList = new ArrayList<>();
     }
 
-    public boolean addLion(Lion lion) {
-        return lionList.add(lion);
+    public void addLion(Lion lion) {
+        lionList.add(lion);
     }
 
-    public boolean addTiger(Tiger tiger) {
-        return tigerList.add(tiger);
+    public void addTiger(Tiger tiger) {
+        tigerList.add(tiger);
     }
 
-    public boolean addEagle(Eagle eagle) {
-        return eagleList.add(eagle);
+    public void addEagle(Eagle eagle) {
+        eagleList.add(eagle);
     }
 
     public Lion getHighestLion() {
