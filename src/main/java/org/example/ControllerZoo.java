@@ -36,6 +36,7 @@ public class ControllerZoo {
         for (int i = 1; i < lionList.size(); i++) {
             if (lionList.get(i).getHeight() > highest.getHeight())
                 highest = lionList.get(i);
+            continue;
         }
         return highest;
     }
