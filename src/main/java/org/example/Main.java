@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Welcome, let's test!\n");
-        ControllerZoo zoo = new ControllerZoo();
+        GestionaleZoo zoo = new GestionaleZoo();
         zoo.addEagle(new Eagle("Aquila1", "abc", 3, LocalDate.now(), 25, 100, 100));
         zoo.addEagle(new Eagle("Aquila2", "cvb", 5, LocalDate.now(), 30, 110, 150));
         zoo.addLion(new Lion("Leone1", "abc", 3, LocalDate.now(), 150, 124, 70));
