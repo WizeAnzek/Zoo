@@ -76,7 +76,7 @@ public class ZooManager {
     }
 
     public TailedAnimal getLongestTailedAnimal() {
-        List<TailedAnimal> tailedAnimalList = getSpeciesList(TailedAnimal.class);
+        List<TailedAnimal> tailedAnimalList = getSuperSpeciesList(TailedAnimal.class);
         if (tailedAnimalList.isEmpty()) {
             return null;
         }
@@ -90,7 +90,7 @@ public class ZooManager {
     }
 
     public WingedAnimal getLargestWingspanAnimal() {
-        List<WingedAnimal> wingedAnimalList = getSpeciesList(WingedAnimal.class);
+        List<WingedAnimal> wingedAnimalList = getSuperSpeciesList(WingedAnimal.class);
         if (wingedAnimalList.isEmpty())
             return null;
         WingedAnimal currentWidestWingspanAnimal = wingedAnimalList.getFirst();
@@ -101,8 +101,8 @@ public class ZooManager {
         }
         return currentWidestWingspanAnimal;
     }
-    
-    private <T extends Animal> List<T> getSpeciesList(Class<? extends Animal> type) {
+
+    private <T extends Animal> List<T> getSuperSpeciesList(Class<? extends Animal> type) {
         List<Animal> speciesList = new ArrayList<>();
         for (Map.Entry<Class<? extends Animal>, List<Animal>> entry : animalsMap.entrySet()) {
             if (type.isAssignableFrom(entry.getKey())) {
