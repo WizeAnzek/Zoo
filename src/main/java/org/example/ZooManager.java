@@ -1,215 +1,120 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ZooManager {
 
-    private final List<Eagle> eagleList;
-    private final List<Lion> lionList;
-    private final List<Tiger> tigerList;
+    private final Map<Class<? extends Animal>, List<Animal>> animalsMap;
 
     public ZooManager() {
-        eagleList = new ArrayList<>();
-        lionList = new ArrayList<>();
-        tigerList = new ArrayList<>();
+        animalsMap = new HashMap<>();
     }
 
-    public void addLion(Lion lion) {
-        lionList.add(lion);
-    }
-
-    public void addTiger(Tiger tiger) {
-        tigerList.add(tiger);
-    }
-
-    public void addEagle(Eagle eagle) {
-        eagleList.add(eagle);
-    }
-
-    public Lion getHighestLion() {
-        if (lionList.isEmpty())
-            return null;
-        Lion currentHighestLion = lionList.get(0);
-        if (lionList.size() == 1)
-            return currentHighestLion;
-        for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getHeight() > currentHighestLion.getHeight())
-                currentHighestLion = lionList.get(i);
+    public void addAnimal(Animal animal) {
+        if (animal == null) {
+            return;
         }
-        return currentHighestLion;
+        Class<? extends Animal> classAnimal = animal.getClass();
+        animalsMap.putIfAbsent(classAnimal, new ArrayList<>());
+        animalsMap.get(classAnimal).add(animal);
     }
 
-    public Lion getLowestLion() {
-        if (lionList.isEmpty())
+    public Animal getHighestSpecimen(Class<? extends Animal> type) {
+        if (animalsMap.get(type) == null) {
             return null;
-        Lion currentLowestLion = lionList.get(0);
-        if (lionList.size() == 1)
-            return currentLowestLion;
-        for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getHeight() < currentLowestLion.getHeight())
-                currentLowestLion = lionList.get(i);
         }
-        return currentLowestLion;
+        List<Animal> speciesList = animalsMap.get(type);
+        Animal currentHighestSpecimen = speciesList.getFirst();
+        for (Animal specimen : speciesList) {
+            if (specimen.getHeight() > currentHighestSpecimen.getHeight()) {
+                currentHighestSpecimen = specimen;
+            }
+        }
+        return currentHighestSpecimen;
     }
 
-    public Tiger getHighestTiger() {
-        if (tigerList.isEmpty())
+    public Animal getLowestSpecimen(Class<? extends Animal> type) {
+        if (animalsMap.get(type) == null) {
             return null;
-        Tiger currentHighestTiger = tigerList.get(0);
-        if (tigerList.size() == 1)
-            return currentHighestTiger;
-        for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getHeight() > currentHighestTiger.getHeight())
-                currentHighestTiger = tigerList.get(i);
         }
-        return currentHighestTiger;
+        List<Animal> speciesList = animalsMap.get(type);
+        Animal currentLowestSpecimen = speciesList.getFirst();
+        for (Animal specimen : speciesList) {
+            if (specimen.getHeight() < currentLowestSpecimen.getHeight()) {
+                currentLowestSpecimen = specimen;
+            }
+        }
+        return currentLowestSpecimen;
     }
 
-    public Tiger getLowestTiger() {
-        if (tigerList.isEmpty())
+    public Animal getHeaviestSpecimen(Class<? extends Animal> type) {
+        if (animalsMap.get(type) == null) {
             return null;
-        Tiger currentLowestTiger = tigerList.get(0);
-        if (tigerList.size() == 1)
-            return currentLowestTiger;
-        for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getHeight() < currentLowestTiger.getHeight())
-                currentLowestTiger = tigerList.get(i);
         }
-        return currentLowestTiger;
+        List<Animal> speciesList = animalsMap.get(type);
+        Animal currentHeaviestSpecimen = speciesList.getFirst();
+        for (Animal specimen : speciesList) {
+            if (specimen.getWeight() > currentHeaviestSpecimen.getWeight()) {
+                currentHeaviestSpecimen = specimen;
+            }
+        }
+        return currentHeaviestSpecimen;
     }
 
-    public Eagle getHighestEagle() {
-        if (eagleList.isEmpty())
+    public Animal getLightestSpecimen(Class<? extends Animal> type) {
+        if (animalsMap.get(type) == null) {
             return null;
-        Eagle currentHighestEagle = eagleList.get(0);
-        if (eagleList.size() == 1)
-            return currentHighestEagle;
-        for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getHeight() > currentHighestEagle.getHeight())
-                currentHighestEagle = eagleList.get(i);
         }
-        return currentHighestEagle;
-    }
-
-    public Eagle getLowestEagle() {
-        if (eagleList.isEmpty())
-            return null;
-        Eagle currentLowestEagle = eagleList.get(0);
-        if (eagleList.size() == 1)
-            return currentLowestEagle;
-        for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getHeight() < currentLowestEagle.getHeight())
-                currentLowestEagle = eagleList.get(i);
+        List<Animal> speciesList = animalsMap.get(type);
+        Animal currentLightestSpecimen = speciesList.getFirst();
+        for (Animal specimen : speciesList) {
+            if (specimen.getHeight() < currentLightestSpecimen.getHeight()) {
+                currentLightestSpecimen = specimen;
+            }
         }
-        return currentLowestEagle;
-    }
-
-    public Lion getHeavierLion() {
-        if (lionList.isEmpty())
-            return null;
-        Lion currentHeavierLion = lionList.get(0);
-        if (lionList.size() == 1)
-            return currentHeavierLion;
-        for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getWeight() > currentHeavierLion.getWeight())
-                currentHeavierLion = lionList.get(i);
-        }
-        return currentHeavierLion;
-    }
-
-    public Lion getLighterLion() {
-        if (lionList.isEmpty())
-            return null;
-        Lion currentLighterLion = lionList.get(0);
-        if (lionList.size() == 1)
-            return currentLighterLion;
-        for (int i = 1; i < lionList.size(); i++) {
-            if (lionList.get(i).getWeight() < currentLighterLion.getWeight())
-                currentLighterLion = lionList.get(i);
-        }
-        return currentLighterLion;
-    }
-
-    public Tiger getHeavierTiger() {
-        if (tigerList.isEmpty())
-            return null;
-        Tiger currentHeavierTiger = tigerList.get(0);
-        if (tigerList.size() == 1)
-            return currentHeavierTiger;
-        for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getWeight() > currentHeavierTiger.getWeight())
-                currentHeavierTiger = tigerList.get(i);
-        }
-        return currentHeavierTiger;
-    }
-
-    public Tiger getLighterTiger() {
-        if (tigerList.isEmpty())
-            return null;
-        Tiger currentLighterTiger = tigerList.get(0);
-        if (tigerList.size() == 1)
-            return currentLighterTiger;
-        for (int i = 1; i < tigerList.size(); i++) {
-            if (tigerList.get(i).getWeight() < currentLighterTiger.getWeight())
-                currentLighterTiger = tigerList.get(i);
-        }
-        return currentLighterTiger;
-    }
-
-    public Eagle getHeavierEagle() {
-        if (eagleList.isEmpty())
-            return null;
-        Eagle currentHeavierEagle = eagleList.get(0);
-        if (eagleList.size() == 1)
-            return currentHeavierEagle;
-        for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getWeight() > currentHeavierEagle.getWeight())
-                currentHeavierEagle = eagleList.get(i);
-        }
-        return currentHeavierEagle;
-    }
-
-    public Eagle getLighterEagle() {
-        if (eagleList.isEmpty())
-            return null;
-        Eagle currentLighterEagle = eagleList.get(0);
-        if (eagleList.size() == 1)
-            return currentLighterEagle;
-        for (int i = 1; i < eagleList.size(); i++) {
-            if (eagleList.get(i).getWeight() < currentLighterEagle.getWeight())
-                currentLighterEagle = eagleList.get(i);
-        }
-        return currentLighterEagle;
+        return currentLightestSpecimen;
     }
 
     public TailedAnimal getLongestTailedAnimal() {
-        List<TailedAnimal> tailedAnimalList = new ArrayList<>();
-        tailedAnimalList.addAll(lionList);
-        tailedAnimalList.addAll(tigerList);
-        if (tailedAnimalList.isEmpty())
+        List<TailedAnimal> tailedAnimalList = getSpeciesList(TailedAnimal.class);
+        if (tailedAnimalList.isEmpty()) {
             return null;
-        TailedAnimal currentLongestTailedAnimal = tailedAnimalList.get(0);
-        if (tailedAnimalList.size() == 1)
-            return currentLongestTailedAnimal;
-        for (int i = 1; i < tailedAnimalList.size(); i++) {
-            if (tailedAnimalList.get(i).getTailLength() < currentLongestTailedAnimal.getTailLength())
-                currentLongestTailedAnimal = tailedAnimalList.get(i);
+        }
+        TailedAnimal currentLongestTailedAnimal = tailedAnimalList.getFirst();
+        for (TailedAnimal specimen : tailedAnimalList) {
+            if (specimen.getTailLength() > currentLongestTailedAnimal.getTailLength()) {
+                currentLongestTailedAnimal = specimen;
+            }
         }
         return currentLongestTailedAnimal;
     }
 
     public WingedAnimal getLargestWingspanAnimal() {
-        List<WingedAnimal> wingedAnimalList = new ArrayList<>(eagleList);
+        List<WingedAnimal> wingedAnimalList = getSpeciesList(WingedAnimal.class);
         if (wingedAnimalList.isEmpty())
             return null;
-        WingedAnimal currentLargestWingspanAnimal = wingedAnimalList.get(0);
-        if (wingedAnimalList.size() == 1)
-            return currentLargestWingspanAnimal;
-        for (int i = 1; i < wingedAnimalList.size(); i++) {
-            if (wingedAnimalList.get(i).getWingspan() < currentLargestWingspanAnimal.getWingspan())
-                currentLargestWingspanAnimal = wingedAnimalList.get(i);
+        WingedAnimal currentWidestWingspanAnimal = wingedAnimalList.getFirst();
+        for (WingedAnimal specimen : wingedAnimalList) {
+            if (specimen.getWingspan() > currentWidestWingspanAnimal.getWingspan()) {
+                currentWidestWingspanAnimal = specimen;
+            }
         }
-        return currentLargestWingspanAnimal;
+        return currentWidestWingspanAnimal;
+    }
+    
+    private <T extends Animal> List<T> getSpeciesList(Class<? extends Animal> type) {
+        List<Animal> speciesList = new ArrayList<>();
+        for (Map.Entry<Class<? extends Animal>, List<Animal>> entry : animalsMap.entrySet()) {
+            if (type.isAssignableFrom(entry.getKey())) {
+                speciesList.addAll(entry.getValue());
+            }
+        }
+        List<T> castedSpeciesList = new ArrayList<>();
+        for (Animal animal : speciesList) {
+            T castedAnimal = (T) animal;
+            castedSpeciesList.add(castedAnimal);
+        }
+        return castedSpeciesList;
     }
 }
+
