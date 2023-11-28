@@ -1,5 +1,7 @@
 package org.example;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.controller.ZooManager;
 import org.example.animals.Eagle;
 import org.example.animals.Lion;
@@ -8,9 +10,10 @@ import org.example.animals.Tiger;
 import java.time.LocalDate;
 
 public class Main {
+    private static final Logger logger = LogManager.getLogger();
     public static void main(String[] args) {
 
-        System.out.println("\nWelcome, let's test!\n");
+        logger.debug("Welcome, let's test!");
         ZooManager zoo = new ZooManager();
         zoo.addAnimal(new Eagle("Aquila1", "abc", 3, LocalDate.now(), 125, 100, 100));
 
@@ -20,21 +23,21 @@ public class Main {
         zoo.addAnimal(new Lion("Leone2", "cvb", 5, LocalDate.now(), 160, 136, 59));
         zoo.addAnimal(new Tiger("Tigre1", "abc", 3, LocalDate.now(), 120, 111, 32));
         zoo.addAnimal(new Tiger("Tigre2", "cvb", 5, LocalDate.now(), 140, 124, 43));
-        System.out.println("Highest Lion: " + zoo.getHighestSpecimen(Lion.class).getName());
-        System.out.println("Lowest Lion: " + zoo.getLowestSpecimen(Lion.class).getName());
+        logger.debug("Highest Lion: {}", zoo.getHighestSpecimen(Lion.class).getName());
+        logger.debug("Lowest Lion: {}", zoo.getLowestSpecimen(Lion.class).getName());
         Lion a = zoo.getHighestSpecimen(Lion.class);
-        System.out.println("Highest Tiger: " + a.getName());
-        System.out.println("Lowest Tiger: " + zoo.getLowestSpecimen(Tiger.class).getName());
-        System.out.println("Highest Eagle: " + zoo.getHighestSpecimen(Eagle.class).getName());
-        System.out.println("Lowest Eagle: " + zoo.getLowestSpecimen(Eagle.class).getName());
-        System.out.println("Heavier Lion: " + zoo.getHeaviestSpecimen(Lion.class).getName());
-        System.out.println("Lighter Lion: " + zoo.getLightestSpecimen(Lion.class).getName());
-        System.out.println("Heavier Tiger: " + zoo.getHeaviestSpecimen(Tiger.class).getName());
-        System.out.println("Lighter Tiger: " + zoo.getLightestSpecimen(Tiger.class).getName());
-        System.out.println("Heavier Eagle: " + zoo.getHeaviestSpecimen(Eagle.class).getName());
-        System.out.println("Lighter Eagle: " + zoo.getLightestSpecimen(Eagle.class).getName());
-        System.out.println("Longest Tailed Animal: " + zoo.getLongestTailedAnimal().getName());
-        System.out.println("Largest Wingspan Animal: " + zoo.getLargestWingspanAnimal().getName());
-        System.out.println("\nTest finished!");
+        logger.debug("Highest Tiger: {}", a.getName());
+        logger.debug("Lowest Tiger: {}",  zoo.getLowestSpecimen(Tiger.class).getName());
+        logger.debug("Highest Eagle: {}", zoo.getHighestSpecimen(Eagle.class).getName());
+        logger.debug("Lowest Eagle: {}", zoo.getLowestSpecimen(Eagle.class).getName());
+        logger.debug("Heavier Lion: {}", zoo.getHeaviestSpecimen(Lion.class).getName());
+        logger.debug("Lighter Lion: {}", zoo.getLightestSpecimen(Lion.class).getName());
+        logger.debug("Heavier Tiger: {}", zoo.getHeaviestSpecimen(Tiger.class).getName());
+        logger.debug("Lighter Tiger: {}", zoo.getLightestSpecimen(Tiger.class).getName());
+        logger.debug("Heavier Eagle: {}", zoo.getHeaviestSpecimen(Eagle.class).getName());
+        logger.debug("Lighter Eagle: {}", zoo.getLightestSpecimen(Eagle.class).getName());
+        logger.debug("Longest Tailed Animal: {}", zoo.getLongestTailedAnimal().getName());
+        logger.debug("Largest Wingspan Animal: {}", zoo.getLargestWingspanAnimal().getName());
+        logger.debug("Test finished!");
     }
 }
