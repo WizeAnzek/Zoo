@@ -15,3 +15,7 @@ T
 $src/main/java/org/example/Tiger.java,2\2\2230e4865934c8c51303b7e3f931953a59401a35
 S
 #src/main/java/org/example/Lion.java,7\4\74c1c70ca165490768ca39adef0a7f2d42f6eb04
+d
+4src/main/java/org/example/controller/ZooManager.java,9\5\95247fced485f690407ed65da256a726083abecd
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
