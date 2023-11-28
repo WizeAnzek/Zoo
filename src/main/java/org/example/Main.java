@@ -1,5 +1,10 @@
 package org.example;
 
+import org.example.animals.Eagle;
+import org.example.animals.Lion;
+import org.example.animals.Tiger;
+import org.example.controller.ZooManager;
+
 import java.time.LocalDate;
 
 public class Main {
