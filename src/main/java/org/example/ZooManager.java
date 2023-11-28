@@ -14,18 +14,21 @@ public class ZooManager {
         if (animal == null) {
             return;
         }
-        Class<? extends Animal> classAnimal = animal.getClass();
-        animalsMap.putIfAbsent(classAnimal, new ArrayList<>());
-        animalsMap.get(classAnimal).add(animal);
+        animalsMap.putIfAbsent(animal.getClass(), new ArrayList<>());
+        animalsMap.get(animal.getClass()).add(animal);
     }
 
-    public Animal getHighestSpecimen(Class<? extends Animal> type) {
-        if (animalsMap.get(type) == null) {
+    /** devo usare getSpeciesList e non una semplice get per avere la lista poiché
+     * anche le classi astratte come WingedAnimal, subtype of Animal, potrebbe invocare questo metodo poiché estendono Animal.
+     * Se facessi get(WingedAnimal) avrei lista vuota perché la map mappa alle sottoclassi non astratte
+     */
+    public <T extends Animal> T getHighestSpecimen(Class<T> animalSpecificClass) {
+        List<T> speciesList = getSpeciesList(animalSpecificClass);
+        if (speciesList.isEmpty()) {
             return null;
         }
-        List<Animal> speciesList = animalsMap.get(type);
-        Animal currentHighestSpecimen = speciesList.getFirst();
-        for (Animal specimen : speciesList) {
+        T currentHighestSpecimen = speciesList.getFirst();
+        for (T specimen : speciesList) {
             if (specimen.getHeight() > currentHighestSpecimen.getHeight()) {
                 currentHighestSpecimen = specimen;
             }
@@ -33,13 +36,13 @@ public class ZooManager {
         return currentHighestSpecimen;
     }
 
-    public Animal getLowestSpecimen(Class<? extends Animal> type) {
-        if (animalsMap.get(type) == null) {
+    public <T extends Animal> T getLowestSpecimen(Class<T> animalSpecificClass) {
+        List<T> speciesList = getSpeciesList(animalSpecificClass);
+        if (speciesList.isEmpty()) {
             return null;
         }
-        List<Animal> speciesList = animalsMap.get(type);
-        Animal currentLowestSpecimen = speciesList.getFirst();
-        for (Animal specimen : speciesList) {
+        T currentLowestSpecimen = speciesList.getFirst();
+        for (T specimen : speciesList) {
             if (specimen.getHeight() < currentLowestSpecimen.getHeight()) {
                 currentLowestSpecimen = specimen;
             }
@@ -47,13 +50,13 @@ public class ZooManager {
         return currentLowestSpecimen;
     }
 
-    public Animal getHeaviestSpecimen(Class<? extends Animal> type) {
-        if (animalsMap.get(type) == null) {
+    public <T extends Animal> T getHeaviestSpecimen(Class<T> animalSpecificClass) {
+        List<T> speciesList = getSpeciesList(animalSpecificClass);
+        if (speciesList.isEmpty()) {
             return null;
         }
-        List<Animal> speciesList = animalsMap.get(type);
-        Animal currentHeaviestSpecimen = speciesList.getFirst();
-        for (Animal specimen : speciesList) {
+        T currentHeaviestSpecimen = speciesList.getFirst();
+        for (T specimen : speciesList) {
             if (specimen.getWeight() > currentHeaviestSpecimen.getWeight()) {
                 currentHeaviestSpecimen = specimen;
             }
@@ -61,13 +64,13 @@ public class ZooManager {
         return currentHeaviestSpecimen;
     }
 
-    public Animal getLightestSpecimen(Class<? extends Animal> type) {
-        if (animalsMap.get(type) == null) {
+    public <T extends Animal> T getLightestSpecimen(Class<T> animalSpecificClass) {
+        List<T> speciesList = getSpeciesList(animalSpecificClass);
+        if (speciesList.isEmpty()) {
             return null;
         }
-        List<Animal> speciesList = animalsMap.get(type);
-        Animal currentLightestSpecimen = speciesList.getFirst();
-        for (Animal specimen : speciesList) {
+        T currentLightestSpecimen = speciesList.getFirst();
+        for (T specimen : speciesList) {
             if (specimen.getHeight() < currentLightestSpecimen.getHeight()) {
                 currentLightestSpecimen = specimen;
             }
@@ -76,7 +79,7 @@ public class ZooManager {
     }
 
     public TailedAnimal getLongestTailedAnimal() {
-        List<TailedAnimal> tailedAnimalList = getSuperSpeciesList(TailedAnimal.class);
+        List<TailedAnimal> tailedAnimalList = getSpeciesList(TailedAnimal.class);
         if (tailedAnimalList.isEmpty()) {
             return null;
         }
@@ -90,9 +93,10 @@ public class ZooManager {
     }
 
     public WingedAnimal getLargestWingspanAnimal() {
-        List<WingedAnimal> wingedAnimalList = getSuperSpeciesList(WingedAnimal.class);
-        if (wingedAnimalList.isEmpty())
+        List<WingedAnimal> wingedAnimalList = getSpeciesList(WingedAnimal.class);
+        if (wingedAnimalList.isEmpty()) {
             return null;
+        }
         WingedAnimal currentWidestWingspanAnimal = wingedAnimalList.getFirst();
         for (WingedAnimal specimen : wingedAnimalList) {
             if (specimen.getWingspan() > currentWidestWingspanAnimal.getWingspan()) {
@@ -102,10 +106,10 @@ public class ZooManager {
         return currentWidestWingspanAnimal;
     }
 
-    private <T extends Animal> List<T> getSuperSpeciesList(Class<? extends Animal> type) {
+    private <T extends Animal> List<T> getSpeciesList(Class<T> animalSpecificClass) {
         List<Animal> speciesList = new ArrayList<>();
         for (Map.Entry<Class<? extends Animal>, List<Animal>> entry : animalsMap.entrySet()) {
-            if (type.isAssignableFrom(entry.getKey())) {
+            if (animalSpecificClass.isAssignableFrom(entry.getKey())) {
                 speciesList.addAll(entry.getValue());
             }
         }

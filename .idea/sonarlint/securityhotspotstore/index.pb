@@ -15,5 +15,3 @@ T
 $src/main/java/org/example/Tiger.java,2\2\2230e4865934c8c51303b7e3f931953a59401a35
 S
 #src/main/java/org/example/Lion.java,7\4\74c1c70ca165490768ca39adef0a7f2d42f6eb04
-V
-&src/main/java/org/example/Species.java,0\5\05a22e46784b9f73162a6161d300311cde4ad087

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Welcome, let's test!\n");
+        System.out.println("\nWelcome, let's test!\n");
         ZooManager zoo = new ZooManager();
         zoo.addAnimal(new Eagle("Aquila1", "abc", 3, LocalDate.now(), 125, 100, 100));
 
@@ -17,7 +17,8 @@ public class Main {
         zoo.addAnimal(new Tiger("Tigre2", "cvb", 5, LocalDate.now(), 140, 124, 43));
         System.out.println("Highest Lion: " + zoo.getHighestSpecimen(Lion.class).getName());
         System.out.println("Lowest Lion: " + zoo.getLowestSpecimen(Lion.class).getName());
-        System.out.println("Highest Tiger: " + zoo.getHighestSpecimen(Tiger.class).getName());
+        Lion a = zoo.getHighestSpecimen(Lion.class);
+        System.out.println("Highest Tiger: " + a.getName());
         System.out.println("Lowest Tiger: " + zoo.getLowestSpecimen(Tiger.class).getName());
         System.out.println("Highest Eagle: " + zoo.getHighestSpecimen(Eagle.class).getName());
         System.out.println("Lowest Eagle: " + zoo.getLowestSpecimen(Eagle.class).getName());
