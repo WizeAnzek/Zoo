@@ -1,4 +1,4 @@
-package org.example;
+package org.example.animals;
 
 import java.time.LocalDate;
 

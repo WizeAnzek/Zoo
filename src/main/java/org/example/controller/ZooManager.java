@@ -1,4 +1,8 @@
-package org.example;
+package org.example.controller;
+
+import org.example.animals.Animal;
+import org.example.animals.TailedAnimal;
+import org.example.animals.WingedAnimal;
 
 import java.util.*;
 
