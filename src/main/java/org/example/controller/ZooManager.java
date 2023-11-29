@@ -22,7 +22,8 @@ public class ZooManager {
         animalsMap.get(animal.getClass()).add(animal);
     }
 
-    /** devo usare getSpeciesList e non una semplice get per avere la lista poiché
+    /**
+     * devo usare getSpeciesList e non una semplice get per avere la lista poiché
      * anche le classi astratte come WingedAnimal, subtype of Animal, potrebbe invocare questo metodo poiché estendono Animal.
      * Se facessi get(WingedAnimal) avrei lista vuota perché la map mappa alle sottoclassi non astratte
      */

@@ -19,3 +19,15 @@ d
 4src/main/java/org/example/controller/ZooManager.java,9\5\95247fced485f690407ed65da256a726083abecd
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+]
+-src/main/java/org/example/animals/Animal.java,b\e\bee8bd704a3cf1f374da4969afca84efd7e2ef70
+\
+,src/main/java/org/example/animals/Eagle.java,8\4\849fdef3d07b18c522c4347c419b39dc51271173
+[
++src/main/java/org/example/animals/Lion.java,2\a\2ac6e3a7a38df6d726d407e20678a0bd152cb807
+c
+3src/main/java/org/example/animals/TailedAnimal.java,7\5\752260dbd181900cfde3e8ffafa437eda20820fe
+\
+,src/main/java/org/example/animals/Tiger.java,8\7\877078ccfb1a3458d16ca39e59ae29758266a7a8
+c
+3src/main/java/org/example/animals/WingedAnimal.java,a\9\a934d176f5f27a0227ac6dc539c6c12e73b8f55c

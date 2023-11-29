@@ -11,6 +11,7 @@ import java.time.LocalDate;
 
 public class Main {
     private static final Logger logger = LogManager.getLogger();
+
     public static void main(String[] args) {
 
         logger.debug("Welcome, let's test!");
