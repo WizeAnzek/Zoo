@@ -1,8 +1,8 @@
-package org.example.controller;
+package exercise.zoo.controller;
 
-import org.example.animals.Animal;
-import org.example.animals.TailedAnimal;
-import org.example.animals.WingedAnimal;
+import exercise.zoo.model.Animal;
+import exercise.zoo.model.TailedAnimal;
+import exercise.zoo.model.WingedAnimal;
 
 import java.util.*;
 
@@ -20,6 +20,22 @@ public class ZooManager {
         }
         animalsMap.putIfAbsent(animal.getClass(), new ArrayList<>());
         animalsMap.get(animal.getClass()).add(animal);
+    }
+
+    private <T extends Animal> List<T> getSpeciesList(Class<T> animalSpecificClass) {
+        if (animalsMap.containsKey(animalSpecificClass)) {
+            return animalsMap.get(animalSpecificClass)
+                    .stream()
+                    .map(animalSpecificClass::cast)
+                    .toList();
+        }
+        return animalsMap
+                .entrySet()
+                .stream()
+                .filter(e -> animalSpecificClass.isAssignableFrom(e.getKey()))
+                .flatMap(e -> e.getValue().stream())
+                .map(animalSpecificClass::cast)
+                .toList();
     }
 
     public <T extends Animal> T getHighestSpecimen(Class<T> animalSpecificClass) {
@@ -62,15 +78,5 @@ public class ZooManager {
                 .stream()
                 .max(Comparator.comparing(WingedAnimal::getWingspan))
                 .orElse(null);
-    }
-
-    private <T extends Animal> List<T> getSpeciesList(Class<T> animalSpecificClass) {
-        return animalsMap
-                .entrySet()
-                .stream()
-                .filter(e -> animalSpecificClass.isAssignableFrom(e.getKey()))
-                .flatMap(e -> e.getValue().stream())
-                .map(animalSpecificClass::cast)
-                .toList();
     }
 }

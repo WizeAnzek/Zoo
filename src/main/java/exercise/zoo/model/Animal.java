@@ -1,17 +1,17 @@
-package org.example.animals;
+package exercise.zoo.model;
 
 import java.time.LocalDate;
 
 public abstract class Animal {
 
-    private String name;
-    private String favouriteMeal;
-    private int age;
-    private LocalDate arrivalDate;
-    private double weight;
-    private int height;
+    private final String name;
+    private final String favouriteMeal;
+    private final int age;
+    private final LocalDate arrivalDate;
+    private final double weight;
+    private final int height;
 
-    public Animal(String name, String favouriteMeal, int age, LocalDate arrivalDate, double weight, int height) {
+    protected Animal(String name, String favouriteMeal, int age, LocalDate arrivalDate, double weight, int height) {
         this.name = name;
         this.favouriteMeal = favouriteMeal;
         this.age = age;

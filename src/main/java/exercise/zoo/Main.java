@@ -1,11 +1,11 @@
-package org.example;
+package exercise.zoo;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.controller.ZooManager;
-import org.example.animals.Eagle;
-import org.example.animals.Lion;
-import org.example.animals.Tiger;
+import exercise.zoo.controller.ZooManager;
+import exercise.zoo.model.Eagle;
+import exercise.zoo.model.Lion;
+import exercise.zoo.model.Tiger;
 
 import java.time.LocalDate;
 
@@ -16,8 +16,6 @@ public class Main {
 
         logger.debug("Welcome, let's test!");
         ZooManager zoo = new ZooManager();
-        zoo.addAnimal(new Eagle("Aquila1", "abc", 3, LocalDate.now(), 125, 100, 100));
-
         zoo.addAnimal(new Eagle("Aquila1", "abc", 3, LocalDate.now(), 25, 100, 100));
         zoo.addAnimal(new Eagle("Aquila2", "cvb", 5, LocalDate.now(), 30, 110, 150));
         zoo.addAnimal(new Lion("Leone1", "abc", 3, LocalDate.now(), 150, 124, 70));

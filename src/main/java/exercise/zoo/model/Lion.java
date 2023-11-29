@@ -1,4 +1,4 @@
-package org.example.animals;
+package exercise.zoo.model;
 
 import java.time.LocalDate;
 
