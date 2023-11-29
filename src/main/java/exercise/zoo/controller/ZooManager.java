@@ -18,8 +18,7 @@ public class ZooManager {
         if (animal == null) {
             return;
         }
-        animalsMap.putIfAbsent(animal.getClass(), new ArrayList<>());
-        animalsMap.get(animal.getClass()).add(animal);
+        animalsMap.computeIfAbsent(animal.getClass(), k -> new ArrayList<>()).add(animal);
     }
 
     private <T extends Animal> List<T> getSpeciesList(Class<T> animalSpecificClass) {
@@ -38,45 +37,39 @@ public class ZooManager {
                 .toList();
     }
 
-    public <T extends Animal> T getHighestSpecimen(Class<T> animalSpecificClass) {
+    public <T extends Animal> Optional<T> getHighestSpecimen(Class<T> animalSpecificClass) {
         return getSpeciesList(animalSpecificClass)
                 .stream()
-                .max(Comparator.comparing(Animal::getHeight))
-                .orElse(null);
+                .max(Comparator.comparing(Animal::getHeight));
     }
 
-    public <T extends Animal> T getLowestSpecimen(Class<T> animalSpecificClass) {
+    public <T extends Animal> Optional<T> getLowestSpecimen(Class<T> animalSpecificClass) {
         return getSpeciesList(animalSpecificClass)
                 .stream()
-                .min(Comparator.comparing(Animal::getHeight))
-                .orElse(null);
+                .min(Comparator.comparing(Animal::getHeight));
     }
 
-    public <T extends Animal> T getHeaviestSpecimen(Class<T> animalSpecificClass) {
+    public <T extends Animal> Optional<T> getHeaviestSpecimen(Class<T> animalSpecificClass) {
         return getSpeciesList(animalSpecificClass)
                 .stream()
-                .max(Comparator.comparing(Animal::getWeight))
-                .orElse(null);
+                .max(Comparator.comparing(Animal::getWeight));
     }
 
-    public <T extends Animal> T getLightestSpecimen(Class<T> animalSpecificClass) {
+    public <T extends Animal> Optional<T> getLightestSpecimen(Class<T> animalSpecificClass) {
         return getSpeciesList(animalSpecificClass)
                 .stream()
-                .min(Comparator.comparing(Animal::getWeight))
-                .orElse(null);
+                .min(Comparator.comparing(Animal::getWeight));
     }
 
-    public TailedAnimal getLongestTailedAnimal() {
+    public Optional<TailedAnimal> getLongestTailedAnimal() {
         return getSpeciesList(TailedAnimal.class)
                 .stream()
-                .max(Comparator.comparing(TailedAnimal::getTailLength))
-                .orElse(null);
+                .max(Comparator.comparing(TailedAnimal::getTailLength));
     }
 
-    public WingedAnimal getLargestWingspanAnimal() {
+    public Optional<WingedAnimal> getLargestWingspanAnimal() {
         return getSpeciesList(WingedAnimal.class)
                 .stream()
-                .max(Comparator.comparing(WingedAnimal::getWingspan))
-                .orElse(null);
+                .max(Comparator.comparing(WingedAnimal::getWingspan));
     }
 }
