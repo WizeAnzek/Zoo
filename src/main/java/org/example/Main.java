@@ -11,6 +11,7 @@ import java.time.LocalDate;
 
 public class Main {
     private static final Logger logger = LogManager.getLogger();
+
     public static void main(String[] args) {
 
         logger.debug("Welcome, let's test!");
@@ -27,7 +28,7 @@ public class Main {
         logger.debug("Lowest Lion: {}", zoo.getLowestSpecimen(Lion.class).getName());
         Lion a = zoo.getHighestSpecimen(Lion.class);
         logger.debug("Highest Tiger: {}", a.getName());
-        logger.debug("Lowest Tiger: {}",  zoo.getLowestSpecimen(Tiger.class).getName());
+        logger.debug("Lowest Tiger: {}", zoo.getLowestSpecimen(Tiger.class).getName());
         logger.debug("Highest Eagle: {}", zoo.getHighestSpecimen(Eagle.class).getName());
         logger.debug("Lowest Eagle: {}", zoo.getLowestSpecimen(Eagle.class).getName());
         logger.debug("Heavier Lion: {}", zoo.getHeaviestSpecimen(Lion.class).getName());
